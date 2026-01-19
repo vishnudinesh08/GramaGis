@@ -1,0 +1,174 @@
+/* 1. General page reset */
+body { 
+    margin: 0; 
+    padding: 0; 
+    overflow: hidden; 
+}
+
+/* 2. SIDEBAR STYLING */
+#sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 280px; /* Slightly wider to accommodate groups */
+    height: 100vh;
+    background: #ffffff;
+    z-index: 1001;
+    padding: 20px;
+    box-sizing: border-box; 
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-y: auto; /* Adds scrollbar IF the 15 layers exceed screen height */
+}
+
+#sidebar h2 {
+    color: #1a73e8; /* Matches search button color */
+    margin: 0 0 5px 0;
+    font-size: 22px;
+}
+
+#sidebar h3 {
+    font-size: 14px;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 15px 0 10px 0;
+}
+
+/* 3. MAP STYLING */
+#map { 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 280px; 
+    background-color: #e3eaef; /* Same color used in the JS maskLayer */
+    z-index: 1;
+}
+
+/* 4. SMART SEARCH CONTAINER */
+#smart-search-container {
+    position: absolute;
+    top: 20px;
+    right: 20px; 
+    z-index: 1000;
+    width: 350px;
+}
+
+.search-wrapper {
+    display: flex;
+    background: white;
+    padding: 5px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border: 1px solid #dfe1e5;
+}
+
+.search-wrapper input {
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 25px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search-wrapper button {
+    background: #1a73e8;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 38px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.2s;
+}
+
+/* 8. NEW: GROUPED LAYER (ACCORDION) STYLING */
+details {
+    margin-bottom: 10px;
+    border: 1px solid #edf2f7;
+    border-radius: 8px;
+    background: #fcfcfc;
+    transition: all 0.3s ease;
+}
+
+details[open] {
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+summary {
+    padding: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #2d3748;
+    list-style: none; /* Removes default arrow in some browsers */
+    display: flex;
+    align-items: center;
+}
+
+summary::-webkit-details-marker {
+    display: none; /* Removes default arrow for Chrome/Safari */
+}
+
+summary::before {
+    content: '▶';
+    font-size: 10px;
+    margin-right: 10px;
+    transition: transform 0.2s;
+    color: #cbd5e0;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+    color: #1a73e8;
+}
+
+/* 5. Layer List Items (Inside Groups) */
+.layer-item {
+    margin: 8px 0;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.layer-item input {
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: #1a73e8; /* Blue checkboxes */
+}
+
+/* 9. NEW: LEGEND BOX STYLING */
+#legend {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f8fafc;
+    border-top: 2px solid #e2e8f0;
+    border-radius: 0 0 8px 8px;
+}
+
+#legend h4 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    color: #2d3748;
+}
+
+#legend-content {
+    font-size: 12px;
+    color: #718096;
+}
+
+#legend-content img {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    border: 1px solid #eee;
+}
+/* Create a custom pane for the mask */
+.leaflet-mask-pane {
+    z-index: 450; /* Between tile layers (400) and overlay layers (500) */
+}

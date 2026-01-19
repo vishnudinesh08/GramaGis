@@ -1,0 +1,14 @@
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore local server logs
+*.log
+
+# If you use VS Code settings locally
+.vscode/
+
+# Ignore large data backups you might have in the folder
+*.zip
+*.shp
+*.dbf
