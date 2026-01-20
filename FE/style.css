@@ -3,6 +3,8 @@ body {
     margin: 0; 
     padding: 0; 
     overflow: hidden; 
+    height: 100vh;
+    width: 100vw;
 }
 
 /* 2. SIDEBAR STYLING */
@@ -10,39 +12,53 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 280px; /* Slightly wider to accommodate groups */
+    width: 280px; 
     height: 100vh;
     background: #ffffff;
-    z-index: 1001;
+    /* High z-index ensures sidebar is ALWAYS above the map */
+    z-index: 2000; 
     padding: 20px;
     box-sizing: border-box; 
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.1); 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-y: auto; /* Adds scrollbar IF the 15 layers exceed screen height */
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
 }
 
 #sidebar h2 {
-    color: #1a73e8; /* Matches search button color */
+    color: #1a73e8; 
     margin: 0 0 5px 0;
     font-size: 22px;
 }
 
 #sidebar h3 {
-    font-size: 14px;
-    color: #7f8c8d;
+    font-size: 11px;
+    color: #a0aec0;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin: 15px 0 10px 0;
+    letter-spacing: 1.5px;
+    margin: 20px 0 10px 0;
+    border-bottom: 1px solid #edf2f7;
+    padding-bottom: 5px;
 }
 
-/* 3. MAP STYLING */
+hr {
+    border: 0;
+    border-top: 1px solid #edf2f7;
+    margin: 15px 0;
+}
+
+/* 3. MAP STYLING - THE MONITOR ALIGNMENT FIX */
 #map { 
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
+    /* Forces map to start exactly after the sidebar */
     left: 280px; 
-    background-color: #e3eaef; /* Same color used in the JS maskLayer */
+    width: calc(100vw - 280px); 
+    height: 100vh;
+    background-color: #d3d3d3; 
     z-index: 1;
 }
 
@@ -51,8 +67,8 @@ body {
     position: absolute;
     top: 20px;
     right: 20px; 
-    z-index: 1000;
-    width: 350px;
+    z-index: 1500;
+    width: 320px;
 }
 
 .search-wrapper {
@@ -60,7 +76,7 @@ body {
     background: white;
     padding: 5px;
     border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     border: 1px solid #dfe1e5;
 }
 
@@ -85,18 +101,18 @@ body {
     transition: background 0.2s;
 }
 
-/* 8. NEW: GROUPED LAYER (ACCORDION) STYLING */
+/* 5. GROUPED LAYER (ACCORDION) STYLING */
 details {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     border: 1px solid #edf2f7;
     border-radius: 8px;
     background: #fcfcfc;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 details[open] {
     background: #ffffff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    border-color: #1a73e8; 
 }
 
 summary {
@@ -104,21 +120,18 @@ summary {
     font-weight: 600;
     cursor: pointer;
     color: #2d3748;
-    list-style: none; /* Removes default arrow in some browsers */
+    list-style: none;
     display: flex;
     align-items: center;
-}
-
-summary::-webkit-details-marker {
-    display: none; /* Removes default arrow for Chrome/Safari */
+    font-size: 14px;
 }
 
 summary::before {
     content: '▶';
-    font-size: 10px;
+    font-size: 8px;
     margin-right: 10px;
     transition: transform 0.2s;
-    color: #cbd5e0;
+    color: #a0aec0;
 }
 
 details[open] summary::before {
@@ -126,49 +139,58 @@ details[open] summary::before {
     color: #1a73e8;
 }
 
-/* 5. Layer List Items (Inside Groups) */
+/* 6. LAYER LIST ITEMS */
 .layer-item {
-    margin: 8px 0;
-    padding-left: 15px;
+    margin: 2px 0;
+    padding: 8px 15px 8px 32px;
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 13px;
     color: #4a5568;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.layer-item:hover {
+    background: #f0f7ff;
+    color: #1a73e8;
 }
 
 .layer-item input {
-    margin-right: 10px;
+    margin-right: 12px;
     cursor: pointer;
-    accent-color: #1a73e8; /* Blue checkboxes */
+    accent-color: #1a73e8; 
 }
 
-/* 9. NEW: LEGEND BOX STYLING */
+/* 7. LEGEND BOX STYLING */
 #legend {
-    margin-top: 25px;
+    margin-top: auto; 
     padding: 15px;
     background: #f8fafc;
-    border-top: 2px solid #e2e8f0;
-    border-radius: 0 0 8px 8px;
+    border-top: 2px solid #1a73e8;
+    border-radius: 4px;
 }
 
 #legend h4 {
-    margin: 0 0 10px 0;
-    font-size: 14px;
+    margin: 0 0 8px 0;
+    font-size: 13px;
     color: #2d3748;
 }
 
-#legend-content {
-    font-size: 12px;
-    color: #718096;
+/* 8. POPUP STYLING */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px;
 }
 
-#legend-content img {
-    display: block;
-    margin-top: 10px;
-    max-width: 100%;
-    border: 1px solid #eee;
+.leaflet-popup-content h3 {
+    margin: 0 0 10px 0;
+    color: #1a73e8;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
 }
-/* Create a custom pane for the mask */
+
+/* MASK Z-INDEX FIX */
 .leaflet-mask-pane {
-    z-index: 450; /* Between tile layers (400) and overlay layers (500) */
+    z-index: 450;
 }

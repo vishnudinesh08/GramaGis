@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="style.css" />
     
     <style>
-        /* Simple addition for the Home Button */
         .home-link {
             display: block;
             margin-bottom: 20px;
@@ -99,25 +98,28 @@
                 <label for="check-banks">Banks</label>
             </div>
             <div class="layer-item">
-        <input type="checkbox" id="check-fire_stations" onchange="toggleLayer('fire_stations', this)">
-        <label for="check-fire_stations">Fire Stations</label>
-    </div>
-        <div class="layer-item">
-            <input type="checkbox" id="check-government_offices" onchange="toggleLayer('government_offices', this)">
-            <label for="check-government_offices">Government Offices</label>
-        </div>
-        <div class="layer-item">
-            <input type="checkbox" id="check-post_offices" onchange="toggleLayer('post_offices', this)">
-            <label for="check-post_offices">Post Offices</label>
-        </div>
+                <input type="checkbox" id="check-fire_stations" onchange="toggleLayer('fire_stations', this)">
+                <label for="check-fire_stations">Fire Stations</label>
+            </div>
+            <div class="layer-item">
+                <input type="checkbox" id="check-government_offices" onchange="toggleLayer('government_offices', this)">
+                <label for="check-government_offices">Government Offices</label>
+            </div>
+            <div class="layer-item">
+                <input type="checkbox" id="check-post_offices" onchange="toggleLayer('post_offices', this)">
+                <label for="check-post_offices">Post Offices</label>
             </div>
         </details>
 
         <hr>
-        <div class="layer-item">
-            <input type="checkbox" id="check-basemap" onchange="toggleLayer('basemap', this)">
-            <label for="check-basemap" style="font-weight: bold;">Unlock World Map</label>
-        </div>
+
+        <details>
+            <summary>⚙️ Map Settings</summary>
+            <div class="layer-item">
+                <input type="checkbox" id="check-world_map" onchange="toggleLayer('world_map', this)">
+                <label for="check-world_map">World Map (Unlock Panning)</label>
+            </div>
+        </details>
     </div>
 
     <div id="smart-search-container">
