@@ -1,6 +1,6 @@
 // js/queryLogic.js
 
-const layerMapping = {
+window.layerMapping = {
     "bank": "banks",
     "boundary": "boundaries",
     "college": "colleges",
