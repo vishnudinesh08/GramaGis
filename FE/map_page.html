@@ -39,7 +39,7 @@
             </div>
             <div class="layer-item">
                 <input type="checkbox" id="check-boundaries" onchange="toggleLayer('boundaries', this)">
-                <label for="check-boundaries">General Boundaries</label>
+                <label for="check-boundaries">Vazhathope</label>
             </div>
         </details>
 
@@ -124,14 +124,26 @@
 
     <div id="smart-search-container">
         <div class="search-wrapper">
-            <input type="text" id="userInput" placeholder="Search for places in Vazhathope...">
-            <button onclick="processSmartQuery()">🔍</button>
+            <input type="text" id="userInput" placeholder="e.g. damaged roads after 2010">
+            <button onclick="executeSmartQuery(layers)">🔍</button>
         </div>
     </div>
 
     <div id="map"></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/queryLogic.js"></script> 
     <script src="map.js"></script>
+    <div id="info-panel">
+    <button class="close-btn" onclick="closeInfoPanel()">×</button>
+    <div class="panel-header">
+        <h3 id="info-title">Feature Details</h3>
+        <span id="info-subtitle">Vazhathope Panchayat</span>
+    </div>
+    <hr>
+    <div id="info-content">
+        <p style="color: #888;">Search for a place to see details here...</p>
+    </div>
+</div>
 </body>
 </html>

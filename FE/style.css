@@ -194,3 +194,39 @@ details[open] summary::before {
 .leaflet-mask-pane {
     z-index: 450;
 }
+
+/* 9. INFO PANEL STYLING (BOTTOM RIGHT) */
+#info-panel {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background: white;
+    z-index: 2000;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    display: none; 
+    overflow-y: auto;
+    font-family: Arial, sans-serif;
+    border-top: 4px solid #2ecc71;
+}
+
+.panel-header h3 { margin: 0; color: #2c3e50; font-size: 1.2rem; }
+.panel-header span { font-size: 0.8rem; color: #7f8c8d; }
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #95a5a6;
+}
+
+#info-content ul { list-style: none; padding: 0; margin: 10px 0; }
+#info-content li { margin-bottom: 8px; font-size: 0.9rem; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+#info-content b { color: #34495e; text-transform: capitalize; }
